@@ -2,7 +2,7 @@ import style from "../styles/PizzaList.module.css";
 import React from "react";
 import PizzaCard from "./PizzaCard";
 
-export default function PizzaList() {
+export default function PizzaList({pizzaList}) {
   return (
     <div className={style.container}>
       <h1 className={style.title}>THE BEST PIZZA IN TOWN</h1>
@@ -13,24 +13,10 @@ export default function PizzaList() {
         dolore?
       </p>
       <div className={style.wrapper}>
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
+       {pizzaList.map((elem)=>(
+        <PizzaCard key={elem.id} pizza={elem} />
+         
+       ))}
       </div>
     </div>
   );
