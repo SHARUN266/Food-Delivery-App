@@ -20,13 +20,7 @@ export default function Features() {
       setIndex(index !== 2 ? index + 1 : 0);
     }
   };
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
+  
 
   return (
     <div className={styles.container}>
