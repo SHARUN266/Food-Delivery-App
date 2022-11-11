@@ -17,6 +17,10 @@ const handler = async (req, res) => {
   }
   if (method == "PUT") {
     try {
+      const order = await Order.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+        res.status(200).send(order);
     } catch (e) {
       res.status(500).json(e.message);
     }

@@ -4,12 +4,33 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styles from "../styles/Navbar.module.css";
 var navTitles=[
-  "Homepage",
-  "Product",
-  "Menu",
-  "Events",
-  "Blog",
-  "Contact"
+  {
+    name:"Home Page",
+    link:"/"
+  },
+  {
+    name:"Product",
+    link:"/"
+  },
+  {
+    name:"Menu",
+    link:"/"
+  },
+  {
+    name:"Events",
+    link:"/"
+  },
+  {
+    
+      name:"Blog",
+      link:"/"
+    
+  },
+  {
+    name:"Contact",
+    link:"/"
+  }
+ 
 
   
 ]
@@ -35,7 +56,9 @@ export default function Navbar() {
         <ul className={styles.list}>
           {
             navTitles.map((title, index) => (
-              <li key={index}  className={styles.listItem}>{title}</li>
+              <Link href={title.link} passHref>
+              <li key={index}  className={styles.listItem}>{title.name}</li>
+              </Link>
             ))
           }
           
