@@ -117,7 +117,22 @@ export default function Admin({ orders, pizzas }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
+  const myCookie = ctx.req?.cookies || "";
+  console.log(myCookie);
+
+  let token=getCookie("token",ctx)
+  console.log(token,"me token")
+  
+  // if(myCookie.token!==process.env.TOKEN){
+  //   return {
+  //     redirect: {
+  //       destination: '/admin/login',
+  //       permanent: false,
+  //     },
+  //   };
+  // }
+
   const productRes = await axios.get("http://localhost:3000/api/products");
   const Orders = await axios.get("http://localhost:3000/api/orders");
 
@@ -128,3 +143,25 @@ export const getServerSideProps = async () => {
     },
   };
 };
+
+
+function getCookie(name,context) {
+  // Split cookie string and get all individual name=value pairs in an array
+  var value = context.req?.cookies
+  const cookieArr=value
+  
+  // Loop through the array elements
+  for(var i = 0; i < cookieArr.length; i++) {
+      var cookiePair = cookieArr[i].split("=");
+      
+      /* Removing whitespace at the beginning of the cookie name
+      and compare it with the given string */
+      if(name == cookiePair[0].trim()) {
+          // Decode the cookie value and return
+          return decodeURIComponent(cookiePair[1]);
+      }
+  }
+  
+  // Return null if not found
+  return null;
+}
