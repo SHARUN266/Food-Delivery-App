@@ -1,7 +1,8 @@
 import dbConnect from "../../../utils/mongo";
 import Product from "../../../models/Products.js";
 export default async function handler(req, res) {
-  const { method } = req;
+  const { method,cookies } = req;
+  const token=cookies.token
   await dbConnect();
   if (method === "GET") {
     try {
@@ -12,6 +13,7 @@ export default async function handler(req, res) {
     }
   }
   if (method === "POST") {
+
     try {
       const productData = await Product.create(req.body);
       res.status(201).json(productData);

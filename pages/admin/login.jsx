@@ -13,7 +13,7 @@ function Login() {
         username,
         password,
       });
-
+       console.log("login success")
       router.push("/admin");
     } catch (err) {
       setError(true);

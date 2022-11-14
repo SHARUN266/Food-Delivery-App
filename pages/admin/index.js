@@ -119,19 +119,18 @@ export default function Admin({ orders, pizzas }) {
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
-  console.log(myCookie);
+  console.log(myCookie.token,"me kaka");
 
-  let token=getCookie("token",ctx)
-  console.log(token,"me token")
+
   
-  // if(myCookie.token!==process.env.TOKEN){
-  //   return {
-  //     redirect: {
-  //       destination: '/admin/login',
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  if(myCookie.token!==process.env.TOKEN){
+    return {
+      redirect: {
+        destination: '/admin/login',
+        permanent: false,
+      },
+    };
+  }
 
   const productRes = await axios.get("http://localhost:3000/api/products");
   const Orders = await axios.get("http://localhost:3000/api/orders");
