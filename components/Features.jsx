@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styles from "../styles/Featured.module.css";
 import Slider from "react-slick";
 import Carousel from "./Carousel";
+import { Box } from "@mui/material";
 export default function Features() {
   const [index, setIndex] = useState(0);
 
@@ -24,8 +25,8 @@ export default function Features() {
   
 
   return (
-     <>
+     <Box h={"7xl"}>
      <Carousel/>
-     </>
+     </Box>
   );
 }
