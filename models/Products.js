@@ -7,6 +7,13 @@ const ProductSchema = new mongoose.Schema(
       required: true,
       maxlength: 60,
     },
+    veg:{
+      type:Boolean,
+      require: true,
+      default: false,
+
+
+    },
 
     image: {
       type: String,
