@@ -31,6 +31,7 @@ export default function Carousel() {
 
   // These are the images used in the slide
   const cards = [
+    "/img/pizza3.png",
     "https://images.unsplash.com/photo-1567349077939-101215abd8ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
     "/img/banner--01.jpg",
     "/img/banner--03.jpg",

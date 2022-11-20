@@ -1,9 +1,4 @@
-.container {
-    height: calc(100vh - 100px);
-    background-color: #222;
-    display: flex;
-  }
-  
+
   .item {
     flex: 1;
     position: relative;

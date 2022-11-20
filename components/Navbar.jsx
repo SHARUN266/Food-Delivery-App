@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { ReactNode } from "react";
 import {
   Box,
   Flex,
+  Image,
   HStack,
   IconButton,
   useDisclosure,
@@ -73,7 +74,7 @@ export default function Simple() {
           <HStack spacing={8} alignItems={"center"}>
             <Box>
               <Box shadow={"md"} className={styles.callButton}>
-                <PhoneIcon color="#e31837" fontSize={"2xl"} />
+                <Image src="/img/BlackWhitePizza.png" />
               </Box>
             </Box>
 
