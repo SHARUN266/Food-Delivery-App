@@ -61,6 +61,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useToast } from '@chakra-ui/react';
 
 function Copyright(props) {
   return (
@@ -78,9 +81,40 @@ function Copyright(props) {
 const theme = createTheme();
 
  function Login() {
-  const handleSubmit = (event) => {
+  const toast=useToast()
+  const router = useRouter();
+ 
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    try {
+      await axios.post("http://localhost:3000/api/login", {
+        username:data.get('email'),
+        password:data.get('password'),
+      });
+      setTimeout(()=>{
+        toast({
+          title: 'Login Seccessfully',
+   
+          status: 'success',
+          duration: 9000,
+          position: 'top-right',
+          isClosable: true,
+        })
+      },2000)
+     
+      router.push("/admin");
+    } catch (err) {
+      toast({
+        title: 'Invalid email or password.',
+
+        
+        status: 'error',
+        duration: 9000,
+        position: 'top-right',
+        isClosable: true,
+      })
+    }
     console.log({
       email: data.get('email'),
       password: data.get('password'),
@@ -89,7 +123,7 @@ const theme = createTheme();
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '90vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -105,7 +139,7 @@ const theme = createTheme();
             backgroundPosition: 'center',
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={0} square>
           <Box
             sx={{
               my: 8,
