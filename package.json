@@ -23,7 +23,7 @@
     "eslint-config-next": "13.0.2",
     "framer-motion": "^7.6.7",
     "mongoose": "^6.7.1",
-    "next": "13.0.2",
+    "next": "13.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
